@@ -5,7 +5,7 @@ class AddBookModel extends ChangeNotifier {
   String? title;
   String? author;
 
-  Future AddBook() async {
+  Future addBook() async {
     if (title == null || title == "") {
       throw 'タイトルが入力されていません';
     }

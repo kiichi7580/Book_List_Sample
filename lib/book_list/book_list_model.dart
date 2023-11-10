@@ -8,16 +8,17 @@ class BookListModel extends ChangeNotifier {
 
   void fetchBookList() async {
     final QuerySnapshot snapshot =
-        await FirebaseFirestore.instance.collection('books').get();
+      await FirebaseFirestore.instance.collection('books').get();
+
     final List<Book> books = snapshot.docs.map((DocumentSnapshot document) {
+        Map<String, dynamic> data = document.data() as Map<String, dynamic>;
+        final String id = document.id;
+        final String title = data['title'] as String;
+        final String author = data['author'] as String;
+        return Book(id, title, author);
+      }).toList();
 
-      Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
-      final String title = data['title'];
-      final String author = data['author'];
-      return Book(title, author);
-    }).toList();
-
-    this.books = books;
-    notifyListeners();
+      this.books = books;
+      notifyListeners();
   }
 }

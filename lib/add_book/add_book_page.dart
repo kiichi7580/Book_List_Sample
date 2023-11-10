@@ -1,10 +1,11 @@
-import 'package:book_list_sample/book_list/book_list_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'add_book_model.dart';
 
 class AddBookPage extends StatelessWidget {
+  const AddBookPage({super.key});
+
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +46,7 @@ class AddBookPage extends StatelessWidget {
                   ElevatedButton(onPressed: () async {
                     //処理の追加
                     try {
-                      await model.AddBook();
+                      await model.addBook();
                       Navigator.of(context).pop(true);
                     } catch(e) {
                       final snackBar = SnackBar(
