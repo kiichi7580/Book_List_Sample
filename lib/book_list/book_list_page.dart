@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:provider/provider.dart';
 import '../domain/book.dart';
+import '../login/login_page.dart';
 
 class BookListPage extends StatelessWidget {
 
@@ -16,6 +17,20 @@ class BookListPage extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: const Text('本一覧'),
+          actions: [
+            IconButton(
+              onPressed: () async {
+                await Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => LoginPage(),
+                    fullscreenDialog: true,
+                  ),
+                );
+                },
+              icon: Icon(Icons.person),
+            ),
+          ],
         ),
         body: Center(
           child: Consumer<BookListModel>(builder: (context, model, child) {

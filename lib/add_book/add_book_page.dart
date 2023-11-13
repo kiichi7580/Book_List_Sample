@@ -85,7 +85,7 @@ class AddBookPage extends StatelessWidget {
                     child: Center(
                       child: CircularProgressIndicator(),
                     ),
-                  )
+                  ),
               ],
             );
           }),
